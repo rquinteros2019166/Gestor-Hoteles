@@ -1,0 +1,76 @@
+<div class="container">
+  <br><br>
+  <p class="fs-1 text-center">Informacion De Evento</p>
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br><br><br>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="NombreEvento" name="nameEvent" #nameEvent="ngModel" [(ngModel)]="modelAddEvent.nameEvent">
+            <label for="floatingInput">Nombre</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="description" name="description" #description="ngModel" [(ngModel)]="modelAddEvent.description">
+            <label for="floatingPassword">Descripcion</label>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="col col-lg-4">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br><br><br>
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="typeEvent" name="typeEvent" #typeEvent="ngModel" [(ngModel)]="modelAddEvent.typeEvent">
+            <label for="floatingInput">Tipo de Evento</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="hotelId" name="hotelId"#hotelId="ngModel" [(ngModel)]="modelAddEvent.hotelId">
+            <label for="floatingPassword">ID Hotel</label>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="col col-lg-4">
+      <form>
+        <br><br><br><br>
+        <div class="form-floating">
+          <input type="datetime-local" class="form-control" id="floatingInput" placeholder="date" name="date" #dateEvent="ngModel" [(ngModel)]="modelAddEvent.dateEvent">
+          <label for="floatingInput">Fecha</label>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger" routerLink="/home">Cancelar</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalImages" >Siguiente</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Images Hotel -->
+<div class="modal fade" id="modalImages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Imagenes del Evento</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputs" placeholder="Imagen Principal" name="images" #images="ngModel" [(ngModel)]="modelAddEvent.images"  >
+            <label for="floatingInputs">Imagen Princial Del Evento</label>
+          </div>
+          <br>
+        </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEvent()" >Guardar Evento</button>
+      </div>
+    </div>
+  </div>
+</div>

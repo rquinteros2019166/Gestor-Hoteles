@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre habitacion</th>
+        <th scope="col">Fecha Entrada</th>
+        <th scope="col">Fecha Salida</th>
+        <th scope="col">Total Habitacion</th>
+        <th scope="col">Total Servicios</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let reser of reservationList' >
+        <th>{{reser._id}}</th>
+        <td>{{reser.idRoom.nameRoom}}</td>
+        <td>{{reser.dateArrival | date}}</td>
+        <td>{{reser.dateDeperture | date}}</td>
+        <td>{{reser.subTotalRoom}}</td>
+        <td>{{reser.subTotalService}}</td>
+        <td>{{reser.idRoom.reservation}}</td>
+    </tbody>
+  </table>
+</div>

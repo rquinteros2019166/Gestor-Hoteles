@@ -1,0 +1,76 @@
+<div class="container">
+  <br><br>
+  <p class="fs-1 text-center">Informacion Hotel</p>
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br><br><br>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" name="name" #name="ngModel" [(ngModel)]="modelAddHotel.name">
+            <label for="floatingInput">Nombre de hotel</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Direccion" name="address" #address="ngModel" [(ngModel)]="modelAddHotel.address">
+            <label for="floatingPassword">Direccion</label>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="col col-lg-4">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br><br><br>
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="Nombre" name="email" #email="ngModel" [(ngModel)]="modelAddHotel.email">
+            <label for="floatingInput">Correo electronico</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Direccion" name="adminUserHotel" #adminUserHotel="ngModel" [(ngModel)]="modelAddHotel.adminUserHotel">
+            <label for="floatingPassword">ID Administrador</label>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="col col-lg-4">
+      <form>
+        <br><br><br><br>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" name="phone" #phone="ngModel" [(ngModel)]="modelAddHotel.phone">
+          <label for="floatingInput">Telefono</label>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger" routerLink="/home">Cancelar</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalImages" >Siguiente</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Images Hotel -->
+<div class="modal fade" id="modalImages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Imagenes del Hotel</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputs" placeholder="Imagen Principal" name="images" #name="ngModel" [(ngModel)]="modelAddHotel.images">
+            <label for="floatingInputs">Imagen Princial De Hotel</label>
+          </div>
+          <br>
+        </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addHotel()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

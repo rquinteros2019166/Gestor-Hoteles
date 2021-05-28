@@ -1,0 +1,101 @@
+<img src="{{_hotelService.getDataHotel().images}}" class="d-block w-100 " alt="..." style="height: 500px;">
+  <div class="wave" style="height: 150px; overflow: hidden;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none"
+          style="height: 100%; width: 100%;">
+          <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+              style="stroke: none; fill: #fff;"></path>
+  </svg>
+</div>
+<br><br><br><br>
+<p class="text-center fs-1">{{_hotelService.getDataHotel().name}} Hotel</p>
+<br><br><br>
+<section class="contenedor sobre-nosotros">
+    <br>
+    <div class="contenedor-sobre-nosotros" style="background-color: #f2f2f2;">
+        <img src="/assets/undraw_Task_re_wi3v.svg" alt="" class="imagen-about-us">
+        <div class="contenido-textos">
+          <br><br><br><br><br><br>
+          <div class="row">
+            <div class="col-xs-13 col-sm-4">
+              <p class="fs-2">Nombre:</p>
+              <p class="fs-4" style="color: #34656d;">{{_hotelService.getDataHotel().name}}  </p>
+            </div>
+            <div class="col-xs-13 col-sm-5">
+              <p class="fs-2">Direccion:</p>
+              <p class="fs-4" style="color: #34656d;">{{_hotelService.getDataHotel().address}}  </p>
+            </div>
+            <div class="col-xs-13 col-sm-4">
+              <p class="fs-2">Telefono:</p>
+              <p class="fs-4" style="color: #34656d;">{{_hotelService.getDataHotel().phone}}  </p>
+            </div>
+            <div class="col-xs-13 col-sm-4">
+              <p class="fs-2">Email:</p>
+              <p class="fs-4" style="color: #34656d;">{{_hotelService.getDataHotel().email}}  </p>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<p class="fs-1 text-center">Nuestras Habitaciones</p>
+<br><br><br>
+<div class="container-md" >
+  <div class="row">
+    <div class="col-xs-12 col-sm-4" *ngFor="let room of modelGetRoom" >
+     <div class="card mb-3" *ngIf="_hotelService.getDataHotel()._id == room.hotelId " >
+        <img src="{{room.image}}" class="card-img-top" alt="..." style="height:200px;">
+      <div class="card-header text-center">
+        <div class="d-grid gap-2">
+          <p>Precio: Q{{room.price}}</p>
+          <button class="btn btn-primary" type="button" (click)="getRoomId(room._id)">{{room.nameRoom}}  </button>
+
+        </div>
+      </div>
+     </div>
+    </div>
+</div>
+<div class="" style="background-color: #f2f2f2;">
+    <br><br>
+    <p class="fs-1 text-center">Futuros Eventos</p>
+  <br><br><br>
+  <div class="container-md" >
+    <div class="row">
+      <div class="col-xs-12 col-sm-4" *ngFor="let events of modelGetEvent" >
+      <div class="card mb-3" *ngIf="_hotelService.getDataHotel()._id == events.hotelId"  >
+          <img src="{{events.images}}" class="card-img-top" alt="..." style="height:200px;">
+        <div class="card-header text-center">
+          <div class="d-grid gap-2">
+            <p>Tipo de Evento: {{events.typeEvent}}</p>
+            <p>{{events.nameEvent}}</p>
+            <p>Fecha: {{events.dateEvent}}</p>
+            <button class="btn btn-primary" type="button">{{events.nameEvent}}" </button>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+<br><br>
+<br><br><br>
+<div class="container" style="background-color: #fff;" >
+  <br><br>
+  <p class="fs-1 text-center">Servicios</p>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4" *ngFor="let service of modelGetService"  >
+    <div class="card mb-3 bg-primary  text-white" *ngIf="_hotelService.getDataHotel()._id == service.hotelId">
+      <div class="card-header text-center" style="height:150px">
+        <p class="fs-1"><i class="{{service.icon}}"></i></p>
+        <div class="d-grid gap-2">
+          <p>Servicio: {{service.nameService}}</p>
+          <p>{{service.descriptionService}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+

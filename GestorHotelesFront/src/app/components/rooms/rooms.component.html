@@ -1,0 +1,71 @@
+<div class="container">
+  <br><br>
+  <p class="fs-1 text-center">Datos de Habitacion</p>
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-6">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br><br><br>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingName" placeholder="Nombre" name="nameRoom" #nameRoom="ngModel" [(ngModel)]="modelAddRoom.nameRoom">
+            <label for="floatingInput">Nombre de habitacion</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Precio" name="price" #price="ngModel" [(ngModel)]="modelAddRoom.price">
+            <label for="floatingPassword">Precio</label>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="col col-lg-6">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br><br><br>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Imagen" name="hotelId" #hotelId="ngModel" [(ngModel)]="modelAddRoom.hotelId">
+            <label for="floatingInput">Id Hotel</label>
+          </div>
+          <br>
+          <div class="row justify-content-md-center">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <button type="button" class="btn btn-danger" routerLink="/home">Cancelar</button>
+              <button type="button" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#modalImagesRoom" >Siguiente</button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="col col-lg-4">
+      <form>
+        <br><br><br><br>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Images Hotel -->
+<div class="modal fade" id="modalImagesRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Imagenes de Habitacion</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputs" placeholder="Imagen Principal" name="image" #image="ngModel" [(ngModel)]="modelAddRoom.image">
+            <label for="floatingInputs">Imagen Princial De Habitacion</label>
+          </div>
+          <br>
+        </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addRoom()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

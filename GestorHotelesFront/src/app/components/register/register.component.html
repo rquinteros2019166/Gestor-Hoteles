@@ -1,0 +1,41 @@
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5">
+
+      <nav class="navbar navbar-light " style="background-color: #f55c47;">
+        <div class="container-fluid justify-content-md-center">
+          <p class="text-center fs-4 ">Ingrese todos los datos</p>
+        </div>
+      </nav>
+
+      <!-- <form (ngSubmit)="registrar()"> -->
+        <form>
+        <div class="mb-3">
+          <label for="inputNombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="inputNombre"
+          name="nombre" #nombre="ngModel" [(ngModel)]="userModel.name">
+        </div>
+        <div class="mb-3">
+          <label for="inputUsuario" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="inputUsuario"
+          name="username" #username="ngModel" [(ngModel)]="userModel.user">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1"
+          name="email" #email="ngModel" [(ngModel)]="userModel.email">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1"
+          name="password" #password="ngModel" [(ngModel)]="userModel.password">
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="button"(click)="register()">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

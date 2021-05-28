@@ -1,0 +1,168 @@
+<img src="{{_roomService.getDataRoom().image}}" class="d-block w-100 " alt="..." style="height: 500px;">
+<br><br><br>
+<p class="fs-1 text-center">Informacion</p>
+<br><br>
+
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      {{_roomService.getDataRoom().nameRoom}}
+    </div>
+    <div class="card-body">
+      <p class="card-title fs-4">Estado: {{_roomService.getDataRoom().reservation}}</p>
+      <p class="card-text fs-5">Hotel: {{_hotelService.getDataHotel().name}}</p>
+      <p class="card-text fs-5">Precio: Q{{_roomService.getDataRoom().price}} por noche</p>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+</div>
+<br><br>
+
+<div class="container" style="background-color: #fff;" >
+  <br><br>
+  <p class="fs-1 text-center">Servicios</p>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4" *ngFor="let service of modelGetService"  >
+    <div class="card mb-3 bg-primary  text-white" *ngIf="_hotelService.getDataHotel()._id == service.hotelId">
+      <div class="card-header text-center" style="height:150px">
+        <p class="fs-1"><i class="{{service.icon}}"></i></p>
+        <div class="d-grid gap-2">
+          <p>Servicio: {{service.nameService}}</p>
+          <p>{{service.descriptionService}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+<br><br>
+
+<div class="container" style="background-color: #f2f2f2;">
+  <br><br>
+  <p class="fs-1 text-center" >Agregar Reservacion en esta habitacion</p>
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <main class="form-signin text-center ">
+        <form>
+          <br><br>
+          <div class="form-floating">
+            <input type="date" class="form-control" id="floatingInput" placeholder="NombreEvento" name="dateArrival" #dateArrival="ngModel" [(ngModel)]="reservetionModel.dateArrival">
+            <label for="floatingInput">Fecha Entrada</label>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <div class="col col-lg-4">
+      <form>
+        <br><br>
+        <div class="form-floating">
+          <input type="date" class="form-control" id="floatingInput" placeholder="date" name="dateDeperture" #dateDeperture="ngModel" [(ngModel)]="reservetionModel.dateDeperture"  >
+          <label for="floatingInput">Fecha Salida</label>
+        </div>
+        <br>
+      </form>
+    </div>
+    <div class="row justify-content-md-center col col-8">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button type="button" class="btn btn-danger" routerLink="/home">Cancelar</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalImages" data-bs-toggle="modal" data-bs-target="#modalServiceReser"
+        (click)="addReservation()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+
+<!-- Modal Servicios Reservacion -->
+<div class="modal fade" id="modalServiceReser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Agregar Servicio a Reservacion</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Icono</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Agregar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let service of modelGetService'>
+              <th scope="row"><i class="{{service.icon}} fs-1"></i>  </th>
+              <td>{{service.nameService}}</td>
+              <td>{{service.price}}</td>
+              <td>
+                <button type="button" class="btn btn-warning"(click)="getServiceId(service._id)">Agregar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#billModal" data-bs-dismiss="modal" (click)="addBill()" >Factura</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Factura -->
+<div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Su Factura</p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Fecha: {{_billService.getBill().dateCreation | date}}</p>
+        <p>Nombre de Usuario: {{_userService.getIdentity().name}}</p>
+        <p>Correo Electronico: {{_userService.getIdentity().email}}</p>
+        <p>Servicios:</p>
+        <table class="table" >
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Servicio</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let serviceRes of modelGetServiceRes">
+              <th>{{serviceRes._id}}</th>
+              <td>{{serviceRes.nameService}}</td>
+              <td>{{serviceRes.price}}</td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+        <p class="fs-5">Servicios: Q{{_reservetionService.getDataReservation().subTotalService}} </p>
+        <p class="fs-5" >Habitacion: Q{{_reservetionService.getDataReservation().subTotalRoom}}</p>
+        <p class="text-end fs-3">Total: Q{{_billService.getBill().total}} </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
