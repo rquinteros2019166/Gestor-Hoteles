@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   providers:[ReservetionService,UserService]
 })
 export class MyreservationComponent implements OnInit {
-  public reservationList = [];
+  public reservationList;
   public token;
   constructor(
     private _reservetionService: ReservetionService,
@@ -26,7 +26,8 @@ export class MyreservationComponent implements OnInit {
     this._reservetionService.listReservationUser(this.token).subscribe(
       response => {
         console.log(response.reservationFind)
-        this.reservationList.push(response.reservationFind);
+        localStorage.setItem('myRes',JSON.stringify(response.reservationFind))
+        this.reservationList = localStorage.getItem('myRes');
       },
       error=>{
         console.log(<any>error)

@@ -112,7 +112,7 @@ export class NavbarComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: error.error.message,
+          //title: error.error.message,
           showConfirmButton: false,
           timer: 1500
         })

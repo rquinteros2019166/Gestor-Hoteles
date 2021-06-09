@@ -67,8 +67,8 @@
           <div class="d-grid gap-2">
             <p>Tipo de Evento: {{events.typeEvent}}</p>
             <p>{{events.nameEvent}}</p>
-            <p>Fecha: {{events.dateEvent}}</p>
-            <button class="btn btn-primary" type="button">{{events.nameEvent}}" </button>
+            <p>Fecha: {{events.dateEvent | date}}</p>
+            <button class="btn btn-primary" type="button">{{events.nameEvent}} </button>
           </div>
         </div>
       </div>
